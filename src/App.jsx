@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
-
 import SearchBar from './components/SearchBar'
-import YoutubePlayer from './components/YoutubePlayer'
+import Player from './components/Player'
 
 function App() {
-
+  
   return (
     <div className="App">
-    <SearchBar/>
-    <YoutubePlayer/>
+      <div>
+        <SearchBar/>
+      </div>
+      <div>
+        <Player/>
+      </div>
     </div>
   )
 }
