@@ -6,10 +6,10 @@ function App() {
   
   return (
     <div className="App">
-      <div>
+      <div className="SearchBar">
         <SearchBar/>
       </div>
-      <div>
+      <div className="Player">
         <Player/>
       </div>
     </div>
