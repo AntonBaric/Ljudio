@@ -14,6 +14,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <h1>LJUDIO</h1>
         <div className="NavBar">
           <NavBar />
           </div>
