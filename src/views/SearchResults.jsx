@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 function SearchResults() {
 	const [songs, setSongs] = useState([])
@@ -26,7 +26,10 @@ function SearchResults() {
 		<div>
 			{ <ul>
 				{content.map(song => (
-          <li key={song.videoId}>{song.name} - {song.artist.name}
+          <li key={song.videoId}>
+            <Link to={`/watch/${song.videoId}`}>
+            {song.name} - {song.artist.name}
+            </Link>
 					</li>
 				))}
                 </ul> }

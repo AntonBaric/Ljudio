@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactPlayer from 'react-player/youtube'
+import { useParams } from 'react-router'
 
 function Player() {
+  const { videoId } = useParams()
 
   return <>
-    <ReactPlayer url='https://www.youtube.com/watch?v=Z8Y1MalRrDc'
+    <ReactPlayer url={'https://www.youtube.com/watch?v=' + videoId}
       config={{
         youtube: {
           playerVars: {

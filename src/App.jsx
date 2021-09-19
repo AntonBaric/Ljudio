@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import NavBar from './components/NavBar'
 import SearchResults from './views/SearchResults'
+import Player from './components/Player'
 
 import {
   BrowserRouter as Router,
@@ -13,16 +14,19 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <div className="SearchBar">
+        <div className="NavBar">
           <NavBar />
+          </div>
           <Switch>
             <Route exact path="/">
             </Route>
             <Route exact path="/search/:searchString">
               <SearchResults/>
             </Route>
+            <Route exact path="/watch/:videoId">
+              <Player/>
+            </Route>
           </Switch>
-        </div>
       </div>
     </Router>
   )
