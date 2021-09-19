@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import NavBar from '../components/NavBar'
 import { useParams } from 'react-router-dom'
 
 function SearchResults() {
@@ -25,7 +24,6 @@ function SearchResults() {
 
 	return (
 		<div>
-
 			{ <ul>
 				{content.map(song => (
           <li key={song.videoId}>{song.name} - {song.artist.name}
