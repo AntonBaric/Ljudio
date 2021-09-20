@@ -1,15 +1,11 @@
 .NavBar {
   padding: 20px;
   display: flex;
-  max-width: 600px;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
   text-align: center;
 }
 
-.App {
-  text-align: center;
-}
 
 .App>h1{
   text-align: center;
@@ -18,4 +14,9 @@
 
 .SearchBar {
   float: right;
+}
+
+.App>.NavBar {
+  background-color: black;
+  max-width: none;
 }
