@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import NavBar from './components/NavBar'
+import About from './views/About'
 import SearchResults from './views/SearchResults'
 import Player from './components/Player'
 
@@ -20,6 +21,9 @@ function App() {
           </div>
           <Switch>
             <Route exact path="/">
+            </Route>
+            <Route exact path="/about">
+              <About/>
             </Route>
             <Route exact path="/search/:searchString">
               <SearchResults/>

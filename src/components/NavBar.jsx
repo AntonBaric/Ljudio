@@ -6,9 +6,10 @@ function NavBar() {
 
 	return (
 		<div>
-			<Link to="/">Home</Link>
+			<Link to="/" className="link">Home </Link>
+			<Link to="/about" className="link">About</Link>
 			
-			<form>
+			<form className="SearchBar">
 			<input type="text" value={searchString} onChange={e => { setSearchString(e.target.value)}}/>
 			<Link to={`/search/${searchString}`}>
 			<button type="submit">Search</button>
