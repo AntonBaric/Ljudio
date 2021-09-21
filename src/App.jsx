@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import NavBar from './components/NavBar'
+import Home from './views/Home'
 import About from './views/About'
 import SearchResults from './views/SearchResults'
 import Player from './components/Player'
@@ -21,6 +22,7 @@ function App() {
           </div>
           <Switch>
             <Route exact path="/">
+            <Home/>
             </Route>
             <Route exact path="/about">
               <About/>

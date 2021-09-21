@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player/youtube'
 import { useParams } from 'react-router'
 
 function Player() {
-  const { videoId } = useParams()
+  const { videoId } = useParams('')
 
   return <>
     <ReactPlayer url={'https://www.youtube.com/watch?v=' + videoId}
