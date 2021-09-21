@@ -11,8 +11,11 @@ function NavBar() {
 			
 			<form className="SearchBar">
 			<input type="text" value={searchString} onChange={e => { setSearchString(e.target.value)}}/>
-			<Link to={`/search/${searchString}`}>
-			<button type="submit">Search</button>
+			<Link to={`/search/songs/${searchString}`}>
+			<button type="submit">Search songs</button>
+			</Link>
+			<Link to={`/search/artists/${searchString}`}>
+			<button type="submit">Search artists</button>
 			</Link>
 			</form>
 		</div>

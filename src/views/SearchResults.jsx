@@ -4,9 +4,7 @@ import { useParams, Link } from 'react-router-dom'
 
 function SearchResults() {
   const [songs, setSongs] = useState([])
-  const [artists, setArtists] = useState([])
-  const { songContent = [] } = songs // songs must be an array in order to use .map
-  const { artistContent = [] } = artists
+  const { content = [] } = songs // songs must be an array in order to use .map
   const { searchString } = useParams()
 
   useEffect(() => {
@@ -21,22 +19,10 @@ function SearchResults() {
       })
   }, [searchString])
 
-  useEffect(() => {
-    axios
-      .get(`https://yt-music-api.herokuapp.com/api/yt/artists/${searchString}`)
-      .then(res => {
-        console.log(res)
-        setArtists(res.data)
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }, [searchString])
-
   return (
     <div>
       {<ul>
-        {songContent.map(song => (
+        {content.map(song => (
           <li key={song.videoId}>
             <Link to={`/watch/${song.videoId}`}>
               {song.name} - {song.artist.name}
@@ -44,13 +30,6 @@ function SearchResults() {
           </li>
         ))}
       </ul>}
-      { <ul>
-        {artistContent.map(artist => (
-          <li key={artist.browseId}>
-            {artist.name}
-          </li>
-        ))}
-      </ul> }
     </div>
   )
 }
