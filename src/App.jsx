@@ -5,6 +5,7 @@ import About from './views/About'
 import SearchResults from './views/SearchResults'
 import ArtistSearchResults from './views/ArtistSearchResults'
 import Player from './components/Player'
+import ArtistInfo from './views/ArtistInfo'
 
 import {
   BrowserRouter as Router,
@@ -36,6 +37,9 @@ function App() {
             </Route>
             <Route exact path="/watch/:videoId">
               <Player/>
+            </Route>
+            <Route exact path="/artist/:browseId">
+              <ArtistInfo/>
             </Route>
           </Switch>
       </div>

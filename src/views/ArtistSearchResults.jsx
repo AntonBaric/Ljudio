@@ -28,7 +28,9 @@ function ArtistSearchResults() {
       { <ul>
         {content.map(artist => (
           <li key={artist.browseId}>
+            <Link to={`/artist/${artist.browseId}`}>
             {artist.name}
+            </Link>
           </li>
         ))}
       </ul> }
