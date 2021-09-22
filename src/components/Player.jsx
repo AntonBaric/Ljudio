@@ -35,6 +35,11 @@ function Player() {
     setDuration(duration)
   }
 
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(window.location.href)
+    alert("Link copied to clipboard")
+  }
+
   return <>
     <div className="Controls">
       <ReactPlayer url={'https://www.youtube.com/watch?v=' + videoId}
@@ -57,6 +62,7 @@ function Player() {
           onChange={handleSeekChange}
           onMouseUp={handleSeekMouseUp}
         />
+        <button onClick={copyToClipboard}>Share</button>
         <Duration seconds={duration * played} className="elapsed"/>
         <Duration seconds={duration} className="totalDuration"/>
     </div>
