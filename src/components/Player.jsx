@@ -1,12 +1,14 @@
 import React, {useState, useRef} from 'react'
 import ReactPlayer from 'react-player/youtube'
 import { useParams } from 'react-router'
+import Duration from './Duration'
 
 function Player() {
   const inputRange = useRef(null)
   const { videoId } = useParams('')
   const [playing, setPlaying] = useState(false)
   const [seeking, setSeeking] = useState(false)
+  const [duration, setDuration] = useState(0)
   const [volume, SetVolume] = useState(1)
   const [played, setPlayed] = useState(0)
 
@@ -23,10 +25,14 @@ function Player() {
     inputRange.current.seekTo(parseFloat(e.target.value))
   }
 
-  const handleProggress = state => {
+  const handleProgress = state => {
     if (!seeking) {
       setPlayed(state.played)
     }
+  }
+
+  const handleDuration = (duration) => {
+    setDuration(duration)
   }
 
   return <>
@@ -38,7 +44,8 @@ function Player() {
         height="0px" width="0px"
         volume={volume}
         ref={inputRange}
-        onProgress={handleProggress}
+        onProgress={handleProgress}
+        onDuration={handleDuration}
       />
       <button onClick={() => setPlaying(playing => !playing)}> {playing ? 'Pause' : 'Play'} </button>
       <input type="range" min={0} max={1} step="any" value={volume}
@@ -50,9 +57,8 @@ function Player() {
           onChange={handleSeekChange}
           onMouseUp={handleSeekMouseUp}
         />
-        <p>
-          {played}
-        </p>
+        <Duration seconds={duration * played} className="elapsed"/>
+        <Duration seconds={duration} className="totalDuration"/>
     </div>
     <iframe width="400" height="300"
       src="https://www.youtube.com/embed/Z8Y1MalRrDc"
