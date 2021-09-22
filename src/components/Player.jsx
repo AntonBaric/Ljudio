@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, { useState, useRef } from 'react'
 import ReactPlayer from 'react-player/youtube'
 import { useParams } from 'react-router'
 import Duration from './Duration'
@@ -53,24 +53,19 @@ function Player() {
         onDuration={handleDuration}
       />
       <button onClick={() => setPlaying(playing => !playing)}> {playing ? 'Pause' : 'Play'} </button>
-      <input type="range" min={0} max={1} step="any" value={volume}
-      onChange={e => {SetVolume(e.target.value)}}
-      />
       <input type='range' min={0} max={1} step='any'
-          value={played}
-          onMouseDown={handleSeekMouseDown}
-          onChange={handleSeekChange}
-          onMouseUp={handleSeekMouseUp}
-        />
-        <button onClick={copyToClipboard}>Share</button>
-        <Duration seconds={duration * played} className="elapsed"/>
-        <Duration seconds={duration} className="totalDuration"/>
+        value={played}
+        onMouseDown={handleSeekMouseDown}
+        onChange={handleSeekChange}
+        onMouseUp={handleSeekMouseUp}
+      />
+      <input type="range" min={0} max={1} step="any" value={volume}
+        onChange={e => { SetVolume(e.target.value) }}
+      />
+      <button onClick={copyToClipboard}>Share</button>
+      <Duration seconds={duration * played} className="elapsed" />
+      <Duration seconds={duration} className="totalDuration" />
     </div>
-    <iframe width="400" height="300"
-      src="https://www.youtube.com/embed/Z8Y1MalRrDc"
-      title="YouTube video player"
-      frameBorder="0" allow="accelerometer; clipboard-write; encrypted-media;
-    gyroscope; picture-in-picture" allowFullScreen></iframe>
   </>
 }
 

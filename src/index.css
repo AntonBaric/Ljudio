@@ -16,6 +16,7 @@
 
 .App>.NavBar {
   background-color: rgb(164, 204, 238);
+  border-radius: 25px;
 }
 
 .link {
