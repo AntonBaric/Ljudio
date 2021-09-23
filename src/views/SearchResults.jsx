@@ -25,6 +25,7 @@ function SearchResults() {
         {content.map(song => (
           <li key={song.videoId}>
             <Link to={`/watch/${song.videoId}`}>
+            <img src={song.thumbnails[1].url} />
               {song.name} - {song.artist.name}
             </Link>
           </li>
