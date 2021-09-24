@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import { useParams, Link } from 'react-router-dom'
+import { SongsContext } from '../components/SongsContext'
 
 function SearchResults() {
-  const [songs, setSongs] = useState([])
+  const {songs, setSongs} = useContext(SongsContext)
   const { content = [] } = songs // songs must be an array in order to use .map
   const { searchString } = useParams()
 

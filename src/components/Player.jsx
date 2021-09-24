@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useContext } from 'react'
 import ReactPlayer from 'react-player/youtube'
 import { useParams } from 'react-router'
 import Duration from './Duration'
+import { SongsContext } from './SongsContext'
 
 function Player() {
   const inputRange = useRef(null)
@@ -11,6 +12,9 @@ function Player() {
   const [duration, setDuration] = useState(0)
   const [volume, SetVolume] = useState(1)
   const [played, setPlayed] = useState(0)
+  const {songs} = useContext(SongsContext)
+
+  console.log(songs);
 
   const handleSeekMouseDown = e => {
     setSeeking(true)
@@ -59,6 +63,8 @@ function Player() {
         onChange={handleSeekChange}
         onMouseUp={handleSeekMouseUp}
       />
+      <button>Previous</button>
+      <button>Next</button>
       <input type="range" min={0} max={1} step="any" value={volume}
         onChange={e => { SetVolume(e.target.value) }}
       />
