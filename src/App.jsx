@@ -6,6 +6,7 @@ import SearchResults from './views/SearchResults'
 import ArtistSearchResults from './views/ArtistSearchResults'
 import Player from './components/Player'
 import ArtistInfo from './views/ArtistInfo'
+import { SongsContext } from './components/SongsContext'
 
 import {
   BrowserRouter as Router,
@@ -14,6 +15,7 @@ import {
 } from 'react-router-dom'
 
 function App() {
+  const [songs, setSongs] = useState([])
 
   return (
     <Router>
@@ -29,6 +31,7 @@ function App() {
             <Route exact path="/about">
               <About/>
             </Route>
+            <SongsContext.Provider value={{songs, setSongs}}>
             <Route exact path="/search/songs/:searchString">
               <SearchResults/>
             </Route>
@@ -38,6 +41,7 @@ function App() {
             <Route exact path="/watch/:videoId">
               <Player/>
             </Route>
+            </SongsContext.Provider>
             <Route exact path="/artist/:browseId">
               <ArtistInfo/>
             </Route>
