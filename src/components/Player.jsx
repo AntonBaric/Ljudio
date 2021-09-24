@@ -1,6 +1,6 @@
 import React, { useState, useRef, useContext } from 'react'
 import ReactPlayer from 'react-player/youtube'
-import { useParams } from 'react-router'
+import { useHistory, useParams } from 'react-router'
 import Duration from './Duration'
 import { SongsContext } from './SongsContext'
 
@@ -13,8 +13,9 @@ function Player() {
   const [volume, SetVolume] = useState(1)
   const [played, setPlayed] = useState(0)
   const {songs} = useContext(SongsContext)
+  const { content = [] } = songs
+  const history = useHistory()
 
-  console.log(songs);
 
   const handleSeekMouseDown = e => {
     setSeeking(true)
@@ -44,6 +45,28 @@ function Player() {
     alert("Link copied to clipboard")
   }
 
+
+  const previousSong = () => {
+    for (let i = 0; i < content.length - 1; i++) {
+      if (content[i].videoId == videoId) {
+        content[i - 1].videoId === videoId
+        history.push(content[i - 1].videoId)
+      }
+    }
+  }
+
+  const nextSong = () => {
+    console.log('Next')
+    for ( let i = 0; i < content.length - 1; i++) {
+      if (content[i].videoId == videoId)  {
+        content[i + 1].videoId === videoId
+        history.push(content[i + 1].videoId)
+        console.log(videoId)
+        console.log(content[i + 1].videoId);
+      }
+    }
+  }
+
   return <>
     <div className="Controls">
       <ReactPlayer url={'https://www.youtube.com/watch?v=' + videoId}
@@ -63,8 +86,8 @@ function Player() {
         onChange={handleSeekChange}
         onMouseUp={handleSeekMouseUp}
       />
-      <button>Previous</button>
-      <button>Next</button>
+      <button onClick={previousSong}>Previous</button>
+      <button onClick={nextSong}>Next</button>
       <input type="range" min={0} max={1} step="any" value={volume}
         onChange={e => { SetVolume(e.target.value) }}
       />
