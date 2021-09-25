@@ -41,10 +41,10 @@ function App() {
             <Route exact path="/watch/:videoId">
               <Player/>
             </Route>
-            </SongsContext.Provider>
             <Route exact path="/artist/:browseId">
               <ArtistInfo/>
             </Route>
+            </SongsContext.Provider>
           </Switch>
       </div>
     </Router>
