@@ -4,9 +4,7 @@ import { useParams, Link } from 'react-router-dom'
 
 function ArtistSearchResults() {
   const [artists, setArtists] = useState([])
-  const [url, setUrl] = useState([])
   const { content = [] } = artists
-  const { thumbnails = [] } = url
   const { searchString } = useParams()
 
 
@@ -16,7 +14,6 @@ function ArtistSearchResults() {
       .then(res => {
         console.log(res)
         setArtists(res.data)
-        setUrl(res.data)
       })
       .catch(err => {
         console.log(err);
@@ -29,6 +26,7 @@ function ArtistSearchResults() {
         {content.map(artist => (
           <li key={artist.browseId}>
             <Link to={`/artist/${artist.browseId}`}>
+            <img src={artist.thumbnails[1].url} />
             {artist.name}
             </Link>
           </li>
