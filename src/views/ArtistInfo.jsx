@@ -7,6 +7,7 @@ function ArtistInfo() {
   const [content, setContent] = useState({})
 
   console.log(browseId);
+  console.log(content);
 
   useEffect(() => {
     axios
